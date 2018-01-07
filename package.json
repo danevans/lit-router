@@ -15,6 +15,7 @@
   "scripts": {
     "build": "webpack --progress -p",
     "watch": "webpack --progress --watch",
-    "server": "webpack-dev-server --open"
+    "server": "webpack-dev-server --open",
+    "test": "yarn run build; node dist/test.js"
   }
 }
