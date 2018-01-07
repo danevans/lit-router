@@ -6,6 +6,7 @@
   "author": "Danston Evanshire",
   "license": "MIT",
   "devDependencies": {
+    "assert": "^1.4.1",
     "babel-core": "^6.26.0",
     "babel-loader": "^7.1.2",
     "babel-preset-env": "^1.6.1",

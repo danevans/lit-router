@@ -1,3 +1,4 @@
+import assert from 'assert';
 import { defroute, routeTo } from './index';
 
 const routes = [
@@ -5,21 +6,15 @@ const routes = [
   [defroute`/people/${'id'}`, (page, params) => ['show', params.id]],
 ];
 
-function equal(a, b) {
-  if (a !== b) {
-    throw `expected ${a} to equal ${b}`;
-  }
-}
-
 const tests = {
   'routeTo index works': () => {
     const response = routeTo('page', routes, '/people');
-    equal(response, 'index');
+    assert.equal(response, 'index');
   },
   'routeTo show works': () => {
     const response = routeTo('page', routes, '/people/5');
-    equal(response[0], 'show')
-    equal(response[1], '5');
+    assert.equal(response[0], 'show')
+    assert.equal(response[1], '5');
   },
 };
 
