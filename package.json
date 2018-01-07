@@ -1,0 +1,20 @@
+{
+  "name": "lit-router",
+  "version": "0.0.0",
+  "description": "A router that uses template literals",
+  "main": "index.js",
+  "author": "Danston Evanshire",
+  "license": "MIT",
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-preset-env": "^1.6.1",
+    "webpack": "^3.10.0",
+    "webpack-dev-server": "2.9.7"
+  },
+  "scripts": {
+    "build": "webpack --progress -p",
+    "watch": "webpack --progress --watch",
+    "server": "webpack-dev-server --open"
+  }
+}
