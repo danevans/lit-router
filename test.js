@@ -18,22 +18,24 @@ const tests = {
   },
 };
 
-let failures = 0;
-let successes = 0;
+const results = {
+  failures: 0,
+  successes: 0,
+};
 
 for (let [name, test] of Object.entries(tests)) {
   try {
     test();
-    successes++;
-    console.log(name, 'passed');
+    results.successes++;
+    console.log('✅', name);
   } catch (e) {
-    failures++;
-    console.error(name, 'failed');
+    results.failures++;
+    console.error('❌', name, e);
   }
 }
 
-console.log('tests passed', successes, 'tests failed', failures);
+console.log('tests passed', results.successes, 'tests failed', results.failures);
 
-if (failures > 0) {
+if (results.failures > 0) {
   throw new Error('not all tests passed');
 }
