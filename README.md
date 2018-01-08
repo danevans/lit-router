@@ -9,16 +9,19 @@ yarn add lit-router
 ## Usage
 
 ```
-import { defroute, routeTo } from 'lit-router';
+import { defroute, routeTo, urlFor } from 'lit-router';
 
-const routes = [
-  [defroute`/users`, (context) => {}],
-  [defroute`/users/${'id'}`, (context, params) => {}]
-]
+const routes = {
+  index: [defroute`/users`, (context) => {}],
+  show: [defroute`/users/${'id'}`, (context, params) => {}]
+};
 
 const context = {};
 
 routeTo(context, routes, window.location.pathname);
+
+urlFor(routes, 'show', { id: 5 });
+// => '/users/5'
 ```
 
 ## Background

@@ -1,21 +1,59 @@
 import assert from 'assert';
-import { defroute, routeTo } from './index';
+import { defroute, routeTo, urlFor } from './index';
 
-const routes = [
+const oldRoutes = [
   [defroute`/people`, (page) => 'index'],
   [defroute`/people/${'id'}`, (page, params) => ['show', params.id]],
 ];
 
+const routes = {
+  index: [defroute`/people`, (page) => 'index'],
+  show: [defroute`/people/${'id'}`, (page, params) => ['show', params.id]],
+};
+
 const tests = {
-  'routeTo index works': () => {
+  // Old-style with an array of unnamed routes
+  'with old routes, routeTo index works'() {
+    const response = routeTo('page', oldRoutes, '/people');
+    assert.equal(response, 'index');
+  },
+  'with old routes, routeTo show works'() {
+    const response = routeTo('page', oldRoutes, '/people/5');
+    assert.equal(response[0], 'show')
+    assert.equal(response[1], '5');
+  },
+
+  // New style with an object containing names and routes
+  'routeTo index works'() {
     const response = routeTo('page', routes, '/people');
     assert.equal(response, 'index');
   },
-  'routeTo show works': () => {
+  'routeTo show works'() {
     const response = routeTo('page', routes, '/people/5');
     assert.equal(response[0], 'show')
     assert.equal(response[1], '5');
   },
+  'routeTo an unknown route throws'() {
+    assert.throws(() => {
+      routeTo('page', routes, '/companies');
+    });
+  },
+
+  // Reverse route, use name to create a URL
+  'urlFor index works'() {
+    const url = urlFor(routes, 'index');
+    assert.equal(url, '/people');
+  },
+  'urlFor show works'() {
+    const url = urlFor(routes, 'show', { id: 415 });
+    assert.equal(url, '/people/415');
+  },
+  'urlFor throws with missing params'() {
+    assert.throws(() => {
+      urlFor(routes, 'show'),
+      Error
+    });
+  }
 };
 
 const results = {
