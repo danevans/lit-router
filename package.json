@@ -2,6 +2,7 @@
   "name": "lit-router",
   "version": "0.1.0",
   "description": "A router that uses template literals",
+  "keywords": ["router", "template-literals"],
   "main": "index.js",
   "author": "Danston Evanshire",
   "license": "MIT",
@@ -18,5 +19,9 @@
     "watch": "webpack --progress --watch",
     "server": "webpack-dev-server --open",
     "test": "yarn run build; node dist/test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/danevans/lit-router.git"
   }
 }
