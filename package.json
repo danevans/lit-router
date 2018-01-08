@@ -1,8 +1,11 @@
 {
   "name": "lit-router",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "A router that uses template literals",
-  "keywords": ["router", "template-literals"],
+  "keywords": [
+    "router",
+    "template-literals"
+  ],
   "main": "index.js",
   "author": "Danston Evanshire",
   "license": "MIT",
