@@ -36,7 +36,7 @@ const tests = {
   'routeTo an unknown route throws'() {
     assert.throws(() => {
       routeTo('page', routes, '/companies');
-    });
+    }, Error);
   },
 
   // Reverse route, use name to create a URL
@@ -50,9 +50,8 @@ const tests = {
   },
   'urlFor throws with missing params'() {
     assert.throws(() => {
-      urlFor(routes, 'show'),
-      Error
-    });
+      urlFor(routes, 'show')
+    }, Error);
   }
 };
 
